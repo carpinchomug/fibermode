@@ -290,7 +290,7 @@ class HybridModeBase(ModeBase):
             rho, phi, pol
         ) * np.cos(phi)
 
-    def _h_rho_in(self, rho: ArrayLike, phi: ArrayLike, pol: ArrayLike) -> ArrayLike:
+    def _h_rho_in(self, rho: ArrayLike, phi: ArrayLike) -> ArrayLike:
         hr = self.h * rho
         return 0j + self.A * (self.omega * epsilon0 * self.n1**2 / (2 * self.h)) * (
             (1 - self.s1) * jv(self.l - 1, hr) + (1 + self.s1) * jv(self.l + 1, hr)
