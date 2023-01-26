@@ -31,6 +31,10 @@
               numpy
               scipy
               setuptools
+              python-lsp-server
+              python-lsp-server.optional-dependencies.all
+              python-lsp-black
+              pyls-isort
             ]))
           ];
         };
