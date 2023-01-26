@@ -9,11 +9,6 @@
       let
         pkgs = nixpkgs.legacyPackages.${system};
 
-        # poetryEnv = pkgs.poetry2nix.mkPoetryEnv {
-        #   projectDir = ./.;
-        #   python = pkgs.python39;
-        #   overrides = pkgs.poetry2nix.defaultPoetryOverrides;
-        # };
       in
       {
         packages.default = with pkgs.python3Packages; buildPythonPackage {
