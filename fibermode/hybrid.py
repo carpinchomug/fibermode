@@ -342,7 +342,7 @@ class HybridModeBase(ModeBase):
         if self.beta is None:
             return self._zeros(rho, phi, pol)
         else:
-            1j * np.sqrt(2) * self.f * np.where(
+            return 1j * np.sqrt(2) * self.f * np.where(
                 rho < self.a,
                 self._h_rho_in(rho, phi),
                 self._h_rho_out(rho, phi),
@@ -352,7 +352,7 @@ class HybridModeBase(ModeBase):
         if self.beta is None:
             return self._zeros(rho, phi, pol)
         else:
-            np.sqrt(2) * self.f * np.where(
+            return np.sqrt(2) * self.f * np.where(
                 rho < self.a,
                 self._h_phi_in(rho, phi),
                 self._h_phi_out(rho, phi),
@@ -362,7 +362,7 @@ class HybridModeBase(ModeBase):
         if self.beta is None:
             return self._zeros(rho, phi, pol)
         else:
-            1j * np.sqrt(2) * np.where(
+            return 1j * np.sqrt(2) * np.where(
                 rho < self.a, self._h_z_in(rho, phi), self._h_z_out(rho, phi)
             ) * np.sin(self.l * phi - pol)
 
