@@ -119,7 +119,7 @@ class HybridModeBase(ModeBase):
             kvp(self.l, qa) / (qa * kv(self.l, qa))
         ) ** 2 + beta2 * (self.l / (self.n1 * self.k)) ** 2 * (
             1 / qa**2 + 1 / ha**2
-        )
+        ) ** 2
 
     def _P_in(self, A):
         ha = self.h * self.a
@@ -415,7 +415,7 @@ class HE(HybridModeBase):
         eve = self._eve(ha)
 
         i_zerocrossings = np.where(eve[:-1] * eve[1:] <= 0)[0]
-        # remove zerorcrossings because of singularities
+        # remove zerorcrossings at singularities
         i_zerocrossings = i_zerocrossings[::2]
 
         if len(i_zerocrossings) < self.m:
