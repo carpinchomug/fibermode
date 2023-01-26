@@ -2,7 +2,7 @@
 ## Using pip
 
 ``` bash
-$ pip install https://github.com/carpinchomug/fibermode.git
+$ pip install git+https://github.com/carpinchomug/fibermode.git
 ```
 
 ## Using nix flake
