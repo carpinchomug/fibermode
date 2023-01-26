@@ -342,29 +342,45 @@ class HybridModeBase(ModeBase):
         if self.beta is None:
             return self._zeros(rho, phi, pol)
         else:
-            return 1j * np.sqrt(2) * self.f * np.where(
-                rho < self.a,
-                self._h_rho_in(rho, phi),
-                self._h_rho_out(rho, phi),
-            ) * np.sin(self.l * phi - pol)
+            return (
+                1j
+                * np.sqrt(2)
+                * self.f
+                * np.where(
+                    rho < self.a,
+                    self._h_rho_in(rho, phi),
+                    self._h_rho_out(rho, phi),
+                )
+                * np.sin(self.l * phi - pol)
+            )
 
     def h_phi(self, rho: ArrayLike, phi: ArrayLike, pol: ArrayLike = 0.0) -> Field:
         if self.beta is None:
             return self._zeros(rho, phi, pol)
         else:
-            return np.sqrt(2) * self.f * np.where(
-                rho < self.a,
-                self._h_phi_in(rho, phi),
-                self._h_phi_out(rho, phi),
-            ) * np.cos(self.l * phi - pol)
+            return (
+                np.sqrt(2)
+                * self.f
+                * np.where(
+                    rho < self.a,
+                    self._h_phi_in(rho, phi),
+                    self._h_phi_out(rho, phi),
+                )
+                * np.cos(self.l * phi - pol)
+            )
 
     def h_z(self, rho: ArrayLike, phi: ArrayLike, pol: ArrayLike = 0.0) -> Field:
         if self.beta is None:
             return self._zeros(rho, phi, pol)
         else:
-            return 1j * np.sqrt(2) * np.where(
-                rho < self.a, self._h_z_in(rho, phi), self._h_z_out(rho, phi)
-            ) * np.sin(self.l * phi - pol)
+            return (
+                1j
+                * np.sqrt(2)
+                * np.where(
+                    rho < self.a, self._h_z_in(rho, phi), self._h_z_out(rho, phi)
+                )
+                * np.sin(self.l * phi - pol)
+            )
 
     def h_x(self, rho: ArrayLike, phi: ArrayLike, pol: ArrayLike = 0.0) -> Field:
         return self.h_rho(rho, phi, pol) * np.cos(phi) - self.h_phi(
